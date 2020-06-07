@@ -7,7 +7,7 @@ import javax.swing.*;
 public class AdminControl extends JFrame implements MouseListener{
 	AdminPanel admin=new AdminPanel();
 	AdminSQL sql=new AdminSQL();
-	JMenuBar menubar;   //²Ëµ¥Ìõ
+	JMenuBar menubar;   //èœå•æ¡
 	JMenu menu1,menu2,menu3,menu4,menu5,menu6,menu7;
 	String id;
 	
@@ -16,31 +16,32 @@ public class AdminControl extends JFrame implements MouseListener{
 		init();
 		setLayout(null);
 		setVisible(true);
-		setTitle("¹ÜÀíÔ±");
+		setTitle("ç®¡ç†å‘˜");
 		setBounds(100,10,1000,710);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		if(this.isUndecorated()){          //ÔËĞĞ³ÌĞò¾ÍÊÇ×î´ó»¯´°¿Ú
+		if(this.isUndecorated()){          //è¿è¡Œç¨‹åºå°±æ˜¯æœ€å¤§åŒ–çª—å£
 			this.setBounds(GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds());
 		}else{
 			this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		}
 
 	}
+	//åŠ è½½ç•Œé¢
 	public void init(){
 		menubar=new JMenuBar();
-		menu1=new JMenu("Ñ§Éú");
+		menu1=new JMenu("å­¦ç”Ÿ");
 		menu1.addMouseListener(this);
-		menu2=new JMenu("½ÌÊ¦");
+		menu2=new JMenu("æ•™å¸ˆ");
 		menu2.addMouseListener(this);
-		menu3=new JMenu("ÔºÏµ");
+		menu3=new JMenu("é™¢ç³»");
 		menu3.addMouseListener(this);
-		menu4=new JMenu("°à¼¶");
+		menu4=new JMenu("ç­çº§");
 		menu4.addMouseListener(this);
-		menu5=new JMenu("·ÖÊı");
+		menu5=new JMenu("åˆ†æ•°");
 		menu5.addMouseListener(this);
-		menu6=new JMenu("¿Î³Ì");
+		menu6=new JMenu("è¯¾ç¨‹");
 		menu6.addMouseListener(this);
-		menu7=new JMenu("¸öÈËÖĞĞÄ");
+		menu7=new JMenu("ä¸ªäººä¸­å¿ƒ");
 		menu7.addMouseListener(this);
 		menubar.add(menu1);
 		menubar.add(menu2);
@@ -55,6 +56,7 @@ public class AdminControl extends JFrame implements MouseListener{
 //		this.add(admin.scorepanel);
 	}
 	int x=0;
+	//é¼ æ ‡ç‚¹å‡»ä»€ä¹ˆå°±è¿›å…¥ä»€ä¹ˆç•Œé¢
 	public void mousePressed(MouseEvent a){
 		
 		if(x==1){
@@ -85,7 +87,7 @@ public class AdminControl extends JFrame implements MouseListener{
 			admin.stu_jb[0].addMouseListener(new MouseListener(){
 				public void mousePressed(MouseEvent a){
 					for(int i=0;i<8;i++){
-						admin.stu_jtf[i+1].setText(sql.selectOneLine("student","Ñ§ºÅ",admin.stu_jtf[0].getText())[i]);
+						admin.stu_jtf[i+1].setText(sql.selectOneLine("student","å­¦å·",admin.stu_jtf[0].getText())[i]);
 					}
 				}
 				public void mouseReleased(MouseEvent a){}
@@ -95,7 +97,7 @@ public class AdminControl extends JFrame implements MouseListener{
 			});
 			admin.stu_jb[1].addMouseListener(new MouseListener(){
 				public void mousePressed(MouseEvent a){
-					sql.deletedOne("student","Ñ§ºÅ",admin.stu_jtf[0].getText());
+					sql.deletedOne("student","å­¦å·",admin.stu_jtf[0].getText());
 				}
 				public void mouseReleased(MouseEvent a){}
 				public void mouseEntered(MouseEvent a){}
@@ -121,7 +123,7 @@ public class AdminControl extends JFrame implements MouseListener{
 			admin.tea_jb[0].addMouseListener(new MouseListener(){
 				public void mousePressed(MouseEvent a){
 					for(int i=0;i<7;i++){
-						admin.tea_jtf[i+1].setText(sql.selectOneLine("teacher","½ÌÊ¦ºÅ",admin.tea_jtf[0].getText())[i]);
+						admin.tea_jtf[i+1].setText(sql.selectOneLine("teacher","æ•™å¸ˆå·",admin.tea_jtf[0].getText())[i]);
 					}
 				}
 				public void mouseReleased(MouseEvent a){}
@@ -131,7 +133,7 @@ public class AdminControl extends JFrame implements MouseListener{
 			});
 			admin.tea_jb[1].addMouseListener(new MouseListener(){
 				public void mousePressed(MouseEvent a){
-					sql.deletedOne("teacher","½ÌÊ¦ºÅ",admin.tea_jtf[0].getText());
+					sql.deletedOne("teacher","æ•™å¸ˆå·",admin.tea_jtf[0].getText());
 				}
 				public void mouseReleased(MouseEvent a){}
 				public void mouseEntered(MouseEvent a){}
@@ -257,7 +259,7 @@ public class AdminControl extends JFrame implements MouseListener{
 			x=6;
 			admin.les_jb[0].addMouseListener(new MouseListener(){
 				public void mousePressed(MouseEvent a){
-					sql.deletedOne("lesson","¿Î³ÌºÅ",admin.les_jtf[0].getText());
+					sql.deletedOne("lesson","è¯¾ç¨‹å·",admin.les_jtf[0].getText());
 				}
 				public void mouseReleased(MouseEvent a){}
 				public void mouseEntered(MouseEvent a){}
@@ -267,7 +269,7 @@ public class AdminControl extends JFrame implements MouseListener{
 			admin.les_jb[1].addMouseListener(new MouseListener(){;
 			public void mousePressed(MouseEvent a){
 				for(int i=0;i<2;i++){
-					admin.les_jtf[i+1].setText(sql.selectOneLine("lesson","¿Î³ÌºÅ",admin.les_jtf[0].getText())[i]);
+					admin.les_jtf[i+1].setText(sql.selectOneLine("lesson","è¯¾ç¨‹å·",admin.les_jtf[0].getText())[i]);
 					
 				}
 			}
